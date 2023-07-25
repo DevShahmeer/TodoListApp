@@ -9,18 +9,20 @@ const AddTodoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(newTask.trim() !== '') {
-      dispatch(addTodo({id: Date.now(), newTask, complete: false}))
+      dispatch(addTodo({id: Date.now(), text: newTask, complete: false}))
       setNewTask('');
     }
   }
   return (
-    <div>
-      <input type="text" 
-      value={newTask}
-      onChange={(e) => setNewTask(e.target.value)}
+    <form className="add-todo-form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="Enter your todo..."
       />
-      <button onClick={handleSubmit}>Add Todo</button>
-    </div>
+      <button type="submit">Add Todo</button>
+    </form>
   )
 }
 

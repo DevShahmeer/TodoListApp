@@ -16,11 +16,11 @@ const TodoList = () => {
   };
 
   return (
-    <div>
+    <div className="todo-list">
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div className={`todo-item ${todo.completed ? 'completed' : ''}`}  key={todo.id}>
           <span
-            style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+            
             onClick={() => handleToggleComplete(todo.id)}
           >
             {todo.text}
